@@ -45,4 +45,10 @@ public class ParseCardTest {
         Card card = CardParser.parseCard("2S");
         assertThat(card.suite(), is(Suite.SPADES));
     }
+
+    @Test
+    void parseCard() {
+        Card expecetedCard = new Card('3', Suite.CLUBS);
+        assertThat(CardParser.parseCard("3C"), is(expecetedCard));
+    }
 }
