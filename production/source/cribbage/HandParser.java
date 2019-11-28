@@ -1,17 +1,16 @@
 package cribbage;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 public class HandParser {
     public static CribbageHand parse(String cardsAsText) {
-        List<Card> cards = Arrays.asList(
-                new Card('5', Suite.HEART),
-                new Card('4', Suite.DIAMOND),
-                new Card('J', Suite.SPADES),
-                new Card('K', Suite.SPADES),
-                new Card('A', Suite.CLUBS)
-        );
+        List<Card> cards = new ArrayList<>();
+        while (!cardsAsText.isEmpty()) {
+            String cardAsText = cardsAsText.substring(0, 2);
+            cardsAsText = cardsAsText.substring(2);
+            cards.add(CardParser.parseCard(cardAsText));
+        }
         return new CribbageHand(cards);
     }
 }

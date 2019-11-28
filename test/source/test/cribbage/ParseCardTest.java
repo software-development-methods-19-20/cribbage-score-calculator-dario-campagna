@@ -48,7 +48,7 @@ public class ParseCardTest {
 
     @Test
     void parseCard() {
-        Card expecetedCard = new Card('3', Suite.CLUBS);
-        assertThat(CardParser.parseCard("3C"), is(expecetedCard));
+        Card expectedCard = new Card('3', Suite.CLUBS);
+        assertThat(CardParser.parseCard("3C"), is(expectedCard));
     }
 }

@@ -24,4 +24,16 @@ public class ParseHandTest {
         ));
         assertThat(HandParser.parse("5H4DJSKSAC"), is(expectedCribbageHand));
     }
+
+    @Test
+    void parseAnotherHand() {
+        CribbageHand expectedCribbageHand = new CribbageHand(Arrays.asList(
+                new Card('A', Suite.HEART),
+                new Card('0', Suite.DIAMOND),
+                new Card('0', Suite.CLUBS),
+                new Card('K', Suite.SPADES),
+                new Card('7', Suite.HEART)
+        ));
+        assertThat(HandParser.parse("AH0D0CKS7H"), is(expectedCribbageHand));
+    }
 }
