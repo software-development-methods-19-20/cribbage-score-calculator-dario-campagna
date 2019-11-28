@@ -1,16 +1,18 @@
 package cribbage;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class HandParser {
     public static CribbageHand parse(String cardsAsText) {
-        List<Card> cards = new ArrayList<>();
-        while (!cardsAsText.isEmpty()) {
-            String cardAsText = cardsAsText.substring(0, 2);
-            cardsAsText = cardsAsText.substring(2);
-            cards.add(CardParser.parseCard(cardAsText));
-        }
-        return new CribbageHand(cards);
+        return new CribbageHand(parseCards(cardsAsText));
     }
+
+    private static List<Card> parseCards(String cardsAsText) {
+        Matcher matcher = Pattern.compile("..").matcher(cardsAsText);
+        return matcher.results().map(m -> CardParser.parseCard(m.group())).collect(Collectors.toList());
+    }
+
 }
