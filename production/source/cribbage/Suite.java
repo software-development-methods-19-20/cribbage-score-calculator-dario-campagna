@@ -1,5 +1,5 @@
 package cribbage;
 
 public enum Suite {
-    DIAMOND, HEART
+    DIAMOND, CLUBS, HEART
 }

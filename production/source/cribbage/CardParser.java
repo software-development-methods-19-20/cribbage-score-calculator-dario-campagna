@@ -12,6 +12,8 @@ public class CardParser {
     private static Suite parseSuite(String cardAsText) {
         if (cardAsText.charAt(1) == 'H') {
             return Suite.HEART;
+        } else if (cardAsText.charAt(1) == 'C') {
+            return Suite.CLUBS;
         } else {
             return Suite.DIAMOND;
         }

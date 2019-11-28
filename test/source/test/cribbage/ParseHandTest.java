@@ -23,4 +23,10 @@ public class ParseHandTest {
         assertThat(card.rank(), is('A'));
         assertThat(card.suite(), is(Suite.DIAMOND));
     }
+
+    @Test
+    void parseCardOfClubs() {
+        Card card = CardParser.parseCard("2C");
+        assertThat(card.suite(), is(Suite.CLUBS));
+    }
 }
