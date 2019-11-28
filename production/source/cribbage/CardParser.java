@@ -12,7 +12,7 @@ public class CardParser {
         put('S', Suite.SPADES);
     }};
 
-    public static Card parseCard(String cardAsText) {
+    public static Card parse(String cardAsText) {
         return new Card(parseRank(cardAsText), parseSuite(cardAsText));
     }
 

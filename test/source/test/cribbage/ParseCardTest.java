@@ -12,43 +12,43 @@ public class ParseCardTest {
 
     @Test
     void parseCardWithRankFive() {
-        Card card = CardParser.parseCard("5H");
+        Card card = CardParser.parse("5H");
         assertThat(card.rank(), is('5'));
     }
 
     @Test
     void parseCardWithRankAce() {
-        Card card = CardParser.parseCard("AD");
+        Card card = CardParser.parse("AD");
         assertThat(card.rank(), is('A'));
     }
 
     @Test
     void parseCardOfHearts() {
-        Card card = CardParser.parseCard("5H");
+        Card card = CardParser.parse("5H");
         assertThat(card.suite(), is(Suite.HEART));
     }
 
     @Test
     void parsCardOfDiamonds() {
-        Card card = CardParser.parseCard("AD");
+        Card card = CardParser.parse("AD");
         assertThat(card.suite(), is(Suite.DIAMOND));
     }
 
     @Test
     void parseCardOfClubs() {
-        Card card = CardParser.parseCard("2C");
+        Card card = CardParser.parse("2C");
         assertThat(card.suite(), is(Suite.CLUBS));
     }
 
     @Test
     void parseCardOfSpades() {
-        Card card = CardParser.parseCard("2S");
+        Card card = CardParser.parse("2S");
         assertThat(card.suite(), is(Suite.SPADES));
     }
 
     @Test
     void parseCard() {
         Card expectedCard = new Card('3', Suite.CLUBS);
-        assertThat(CardParser.parseCard("3C"), is(expectedCard));
+        assertThat(CardParser.parse("3C"), is(expectedCard));
     }
 }
