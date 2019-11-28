@@ -9,6 +9,7 @@ public class CardParser {
         put('C', Suite.CLUBS);
         put('H', Suite.HEART);
         put('D', Suite.DIAMOND);
+        put('S', Suite.SPADES);
     }};
 
     public static Card parseCard(String cardAsText) {

@@ -29,4 +29,10 @@ public class ParseHandTest {
         Card card = CardParser.parseCard("2C");
         assertThat(card.suite(), is(Suite.CLUBS));
     }
+
+    @Test
+    void parseCardOfSpades() {
+        Card card = CardParser.parseCard("2S");
+        assertThat(card.suite(), is(Suite.SPADES));
+    }
 }
