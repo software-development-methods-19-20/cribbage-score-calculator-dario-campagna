@@ -1,6 +1,16 @@
 package cribbage;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class CardParser {
+
+    private static Map<Character, Suite> charToSuite = new HashMap<>() {{
+        put('C', Suite.CLUBS);
+        put('H', Suite.HEART);
+        put('D', Suite.DIAMOND);
+    }};
+
     public static Card parseCard(String cardAsText) {
         return new Card(parseRank(cardAsText), parseSuite(cardAsText));
     }
@@ -10,12 +20,6 @@ public class CardParser {
     }
 
     private static Suite parseSuite(String cardAsText) {
-        if (cardAsText.charAt(1) == 'H') {
-            return Suite.HEART;
-        } else if (cardAsText.charAt(1) == 'C') {
-            return Suite.CLUBS;
-        } else {
-            return Suite.DIAMOND;
-        }
+        return charToSuite.get(cardAsText.charAt(1));
     }
 }
