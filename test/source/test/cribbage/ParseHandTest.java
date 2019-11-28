@@ -13,7 +13,14 @@ public class ParseHandTest {
     @Test
     void parseOneCard() {
         Card card = CardParser.parseCard("5H");
-        assertThat(card.rank(), is("5"));
+        assertThat(card.rank(), is('5'));
         assertThat(card.suite(), is(Suite.HEART));
+    }
+
+    @Test
+    void parseAnotherCard() {
+        Card card = CardParser.parseCard("AD");
+        assertThat(card.rank(), is('A'));
+        assertThat(card.suite(), is(Suite.DIAMOND));
     }
 }
