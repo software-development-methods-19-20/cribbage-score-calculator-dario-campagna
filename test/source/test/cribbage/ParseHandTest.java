@@ -16,8 +16,8 @@ public class ParseHandTest {
     @Test
     void parseHand() {
         CribbageHand expectedCribbageHand = new CribbageHand(Arrays.asList(
-                new Card('5', Suite.HEART),
-                new Card('4', Suite.DIAMOND),
+                new Card('5', Suite.HEARTS),
+                new Card('4', Suite.DIAMONDS),
                 new Card('J', Suite.SPADES),
                 new Card('K', Suite.SPADES),
                 new Card('A', Suite.CLUBS)
@@ -28,11 +28,11 @@ public class ParseHandTest {
     @Test
     void parseAnotherHand() {
         CribbageHand expectedCribbageHand = new CribbageHand(Arrays.asList(
-                new Card('A', Suite.HEART),
-                new Card('0', Suite.DIAMOND),
+                new Card('A', Suite.HEARTS),
+                new Card('0', Suite.DIAMONDS),
                 new Card('0', Suite.CLUBS),
                 new Card('K', Suite.SPADES),
-                new Card('7', Suite.HEART)
+                new Card('7', Suite.HEARTS)
         ));
         assertThat(HandParser.parse("AH0D0CKS7H"), is(expectedCribbageHand));
     }

@@ -25,13 +25,13 @@ public class ParseCardTest {
     @Test
     void parseCardOfHearts() {
         Card card = CardParser.parse("5H");
-        assertThat(card.suite(), is(Suite.HEART));
+        assertThat(card.suite(), is(Suite.HEARTS));
     }
 
     @Test
     void parsCardOfDiamonds() {
         Card card = CardParser.parse("AD");
-        assertThat(card.suite(), is(Suite.DIAMOND));
+        assertThat(card.suite(), is(Suite.DIAMONDS));
     }
 
     @Test

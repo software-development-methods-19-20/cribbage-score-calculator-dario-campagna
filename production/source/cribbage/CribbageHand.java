@@ -9,6 +9,10 @@ public class CribbageHand {
         this.cards = cards;
     }
 
+    public int scoreWith(PairsRule pairsRule) {
+        return pairsRule.applyTo(cards);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -7,8 +7,8 @@ public class CardParser {
 
     private static Map<Character, Suite> charToSuite = new HashMap<>() {{
         put('C', Suite.CLUBS);
-        put('H', Suite.HEART);
-        put('D', Suite.DIAMOND);
+        put('H', Suite.HEARTS);
+        put('D', Suite.DIAMONDS);
         put('S', Suite.SPADES);
     }};
 

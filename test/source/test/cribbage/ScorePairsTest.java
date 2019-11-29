@@ -2,9 +2,8 @@ package test.cribbage;
 
 import cribbage.Card;
 import cribbage.CribbageHand;
-import cribbage.Scorer;
+import cribbage.PairsRule;
 import cribbage.Suite;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -12,10 +11,10 @@ import java.util.Arrays;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class ScoreTest {
+public class ScorePairsTest {
 
     @Test
-    void twoPointsForAPairOfCardsOfAKind() {
+    void twoPointsForAPairsOfCardOfAKind() {
         CribbageHand cribbageHand = new CribbageHand(Arrays.asList(
                 new Card('2', Suite.DIAMONDS),
                 new Card('A', Suite.DIAMONDS),
@@ -23,12 +22,11 @@ public class ScoreTest {
                 new Card('7', Suite.DIAMONDS),
                 new Card('9', Suite.DIAMONDS)
         ));
-        assertThat(Scorer.score(cribbageHand), is(2));
+        assertThat(cribbageHand.scoreWith(new PairsRule()), is(2));
     }
 
     @Test
-    @Disabled
-    void fourPointsForTwoPairsOfCardsOfAKind() {
+    void fourPointsForAPairsOfCardOfAKind() {
         CribbageHand cribbageHand = new CribbageHand(Arrays.asList(
                 new Card('3', Suite.DIAMONDS),
                 new Card('A', Suite.DIAMONDS),
@@ -36,6 +34,6 @@ public class ScoreTest {
                 new Card('6', Suite.DIAMONDS),
                 new Card('A', Suite.HEARTS)
         ));
-        assertThat(Scorer.score(cribbageHand), is(4));
+        assertThat(cribbageHand.scoreWith(new PairsRule()), is(4));
     }
 }
