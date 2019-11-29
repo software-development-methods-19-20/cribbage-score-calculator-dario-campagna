@@ -9,8 +9,8 @@ public class CribbageHand {
         this.cards = cards;
     }
 
-    public int scoreWith(PairsRule pairsRule) {
-        return pairsRule.applyTo(cards);
+    public int scoreWith(Rule rule) {
+        return rule.applyTo(cards);
     }
 
     @Override

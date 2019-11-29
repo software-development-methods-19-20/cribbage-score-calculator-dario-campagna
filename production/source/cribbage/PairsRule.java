@@ -2,7 +2,7 @@ package cribbage;
 
 import java.util.List;
 
-public class PairsRule {
+public class PairsRule implements Rule {
     public int applyTo(List<Card> cards) {
         return (int) (2 * numberOfPairsIn(cards));
     }

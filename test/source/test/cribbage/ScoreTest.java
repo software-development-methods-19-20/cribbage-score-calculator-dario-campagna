@@ -1,17 +1,18 @@
 package test.cribbage;
 
-import cribbage.Card;
-import cribbage.CribbageHand;
-import cribbage.Scorer;
-import cribbage.Suite;
+import cribbage.*;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.stream.Stream;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 public class ScoreTest {
+
+    private Scorer scorer = new Scorer(Stream.of(new PairsRule()));
 
     @Test
     void pair() {
@@ -22,7 +23,7 @@ public class ScoreTest {
                 new Card('7', Suite.DIAMONDS),
                 new Card('9', Suite.DIAMONDS)
         ));
-        assertThat(Scorer.score(cribbageHand), is(2));
+        assertThat(scorer.score(cribbageHand), is(2));
     }
 
     @Test
@@ -34,7 +35,7 @@ public class ScoreTest {
                 new Card('6', Suite.DIAMONDS),
                 new Card('A', Suite.HEARTS)
         ));
-        assertThat(Scorer.score(cribbageHand), is(4));
+        assertThat(scorer.score(cribbageHand), is(4));
     }
 
     @Test
@@ -46,7 +47,7 @@ public class ScoreTest {
                 new Card('6', Suite.DIAMONDS),
                 new Card('0', Suite.HEARTS)
         ));
-        assertThat(Scorer.score(cribbageHand), is(6));
+        assertThat(scorer.score(cribbageHand), is(6));
     }
 
     @Test
@@ -58,6 +59,19 @@ public class ScoreTest {
                 new Card('K', Suite.DIAMONDS),
                 new Card('0', Suite.HEARTS)
         ));
-        assertThat(Scorer.score(cribbageHand), is(12));
+        assertThat(scorer.score(cribbageHand), is(12));
+    }
+
+    @Test
+    @Disabled
+    void flush() {
+        CribbageHand cribbageHand = new CribbageHand(Arrays.asList(
+                new Card('4', Suite.HEARTS),
+                new Card('9', Suite.HEARTS),
+                new Card('3', Suite.HEARTS),
+                new Card('K', Suite.HEARTS),
+                new Card('0', Suite.SPADES)
+        ));
+        assertThat(scorer.score(cribbageHand), is(4));
     }
 }
