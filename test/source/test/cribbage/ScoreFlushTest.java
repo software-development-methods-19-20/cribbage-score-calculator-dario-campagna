@@ -26,6 +26,18 @@ public class ScoreFlushTest {
     }
 
     @Test
+    void fivePointsForAFlushAndStarterCardOfTheSameSuite() {
+        CribbageHand cribbageHand = new CribbageHand(Arrays.asList(
+                new Card('4', Suite.HEARTS),
+                new Card('9', Suite.HEARTS),
+                new Card('3', Suite.HEARTS),
+                new Card('K', Suite.HEARTS)),
+                new Card('0', Suite.HEARTS)
+        );
+        assertThat(cribbageHand.scoreWith(new FlushRule()), is(5));
+    }
+
+    @Test
     void noFlushNoPoints() {
         CribbageHand cribbageHand = new CribbageHand(Arrays.asList(
                 new Card('4', Suite.DIAMONDS),
