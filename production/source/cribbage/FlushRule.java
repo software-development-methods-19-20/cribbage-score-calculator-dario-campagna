@@ -6,12 +6,14 @@ public class FlushRule implements Rule {
 
     @Override
     public int applyTo(List<Card> handCards, Card starterCard) {
-        if (handCards.stream().allMatch(card -> card.suite().equals(handCards.get(0).suite())) && starterCard.suite().equals(handCards.get(0).suite())) {
-            return 5;
-        }else if (handCards.stream().allMatch(card -> card.suite().equals(handCards.get(0).suite()))) {
-            return 4;
-        } else {
-            return 0;
-        }
+        return pointsForHandCardsAllOfTheSameSuite(handCards) + pointsForStarterCardOfTheSameSuite(handCards, starterCard);
+    }
+
+    private int pointsForHandCardsAllOfTheSameSuite(List<Card> handCards) {
+        return handCards.stream().allMatch(card -> card.suite().equals(handCards.get(0).suite())) ? 4 : 0;
+    }
+
+    private int pointsForStarterCardOfTheSameSuite(List<Card> handCards, Card starterCard) {
+        return handCards.stream().allMatch(card -> card.suite().equals(starterCard.suite())) ? 1 : 0;
     }
 }
