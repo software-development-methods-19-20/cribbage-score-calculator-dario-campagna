@@ -48,4 +48,16 @@ public class ScoreFlushTest {
         );
         assertThat(cribbageHand.scoreWith(new FlushRule()), is(0));
     }
+
+    @Test
+    void onePointForHoldingTheJackOfTheSameSuiteAsTheStarterCard() {
+        CribbageHand cribbageHand = new CribbageHand(Arrays.asList(
+                new Card('4', Suite.DIAMONDS),
+                new Card('J', Suite.SPADES),
+                new Card('3', Suite.HEARTS),
+                new Card('K', Suite.HEARTS)),
+                new Card('0', Suite.SPADES)
+        );
+        assertThat(cribbageHand.scoreWith(new FlushRule()), is(1));
+    }
 }
