@@ -9,7 +9,7 @@ public class HandParser {
 
     public static CribbageHand parse(String cardsAsText) {
         List<Card> allCards = parseCards(cardsAsText);
-        return new CribbageHand(allCards.subList(0,4), allCards.get(4));
+        return new CribbageHand(allCards.subList(0, 4), allCards.get(4));
     }
 
     private static List<Card> parseCards(String cardsAsText) {

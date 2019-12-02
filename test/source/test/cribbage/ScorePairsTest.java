@@ -22,7 +22,7 @@ public class ScorePairsTest {
                 new Card('7', Suite.DIAMONDS)),
                 new Card('9', Suite.DIAMONDS)
         );
-        assertThat(cribbageHand.scoreWith(new PairsRule()), is(2));
+        assertThat(new PairsRule().score(cribbageHand), is(2));
     }
 
     @Test
@@ -34,7 +34,7 @@ public class ScorePairsTest {
                 new Card('6', Suite.DIAMONDS)),
                 new Card('A', Suite.HEARTS)
         );
-        assertThat(cribbageHand.scoreWith(new PairsRule()), is(4));
+        assertThat(new PairsRule().score(cribbageHand), is(4));
     }
 
     @Test
@@ -46,7 +46,7 @@ public class ScorePairsTest {
                 new Card('6', Suite.DIAMONDS)),
                 new Card('3', Suite.HEARTS)
         );
-        assertThat(cribbageHand.scoreWith(new PairsRule()), is(6));
+        assertThat(new PairsRule().score(cribbageHand), is(6));
     }
 
     @Test
@@ -58,6 +58,6 @@ public class ScorePairsTest {
                 new Card('6', Suite.DIAMONDS)),
                 new Card('A', Suite.HEARTS)
         );
-        assertThat(cribbageHand.scoreWith(new PairsRule()), is(12));
+        assertThat(new PairsRule().score(cribbageHand), is(12));
     }
 }

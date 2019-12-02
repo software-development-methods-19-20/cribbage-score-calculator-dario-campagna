@@ -22,7 +22,7 @@ public class ScoreFlushTest {
                 new Card('K', Suite.HEARTS)),
                 new Card('0', Suite.SPADES)
         );
-        assertThat(cribbageHand.scoreWith(new FlushRule()), is(4));
+        assertThat(new FlushRule().score(cribbageHand), is(4));
     }
 
     @Test
@@ -34,7 +34,7 @@ public class ScoreFlushTest {
                 new Card('K', Suite.HEARTS)),
                 new Card('0', Suite.HEARTS)
         );
-        assertThat(cribbageHand.scoreWith(new FlushRule()), is(5));
+        assertThat(new FlushRule().score(cribbageHand), is(5));
     }
 
     @Test
@@ -46,7 +46,7 @@ public class ScoreFlushTest {
                 new Card('K', Suite.HEARTS)),
                 new Card('0', Suite.SPADES)
         );
-        assertThat(cribbageHand.scoreWith(new FlushRule()), is(0));
+        assertThat(new FlushRule().score(cribbageHand), is(0));
     }
 
     @Test
@@ -58,6 +58,6 @@ public class ScoreFlushTest {
                 new Card('K', Suite.HEARTS)),
                 new Card('0', Suite.SPADES)
         );
-        assertThat(cribbageHand.scoreWith(new FlushRule()), is(1));
+        assertThat(new FlushRule().score(cribbageHand), is(1));
     }
 }

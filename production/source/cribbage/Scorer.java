@@ -10,6 +10,6 @@ public class Scorer {
     }
 
     public Integer score(CribbageHand cribbageHand) {
-        return rules.mapToInt(r -> cribbageHand.scoreWith(r)).sum();
+        return rules.mapToInt(r -> r.score(cribbageHand)).sum();
     }
 }
