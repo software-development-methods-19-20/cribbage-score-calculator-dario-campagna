@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface Rule {
 
-    int applyTo(List<Card> cards);
+    int applyTo(List<Card> handCards, Card starterCard);
 
 }

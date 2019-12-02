@@ -1,10 +1,13 @@
 package cribbage;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PairsRule implements Rule {
-    public int applyTo(List<Card> cards) {
-        return (int) (2 * numberOfPairsIn(cards));
+    public int applyTo(List<Card> handCards, Card starterCard) {
+        List<Card> allCards = new ArrayList<>(handCards);
+        allCards.add(starterCard);
+        return (int) (2 * numberOfPairsIn(allCards));
     }
 
     private long numberOfPairsIn(List<Card> cards) {

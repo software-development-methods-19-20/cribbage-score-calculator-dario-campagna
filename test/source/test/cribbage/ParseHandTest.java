@@ -19,9 +19,9 @@ public class ParseHandTest {
                 new Card('5', Suite.HEARTS),
                 new Card('4', Suite.DIAMONDS),
                 new Card('J', Suite.SPADES),
-                new Card('K', Suite.SPADES),
+                new Card('K', Suite.SPADES)),
                 new Card('A', Suite.CLUBS)
-        ));
+        );
         assertThat(HandParser.parse("5H4DJSKSAC"), is(expectedCribbageHand));
     }
 
@@ -31,9 +31,9 @@ public class ParseHandTest {
                 new Card('A', Suite.HEARTS),
                 new Card('0', Suite.DIAMONDS),
                 new Card('0', Suite.CLUBS),
-                new Card('K', Suite.SPADES),
+                new Card('K', Suite.SPADES)),
                 new Card('7', Suite.HEARTS)
-        ));
+        );
         assertThat(HandParser.parse("AH0D0CKS7H"), is(expectedCribbageHand));
     }
 }

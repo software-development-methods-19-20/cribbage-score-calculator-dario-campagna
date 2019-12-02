@@ -19,9 +19,9 @@ public class ScorePairsTest {
                 new Card('2', Suite.DIAMONDS),
                 new Card('A', Suite.DIAMONDS),
                 new Card('2', Suite.CLUBS),
-                new Card('7', Suite.DIAMONDS),
+                new Card('7', Suite.DIAMONDS)),
                 new Card('9', Suite.DIAMONDS)
-        ));
+        );
         assertThat(cribbageHand.scoreWith(new PairsRule()), is(2));
     }
 
@@ -31,9 +31,9 @@ public class ScorePairsTest {
                 new Card('3', Suite.DIAMONDS),
                 new Card('A', Suite.DIAMONDS),
                 new Card('3', Suite.CLUBS),
-                new Card('6', Suite.DIAMONDS),
+                new Card('6', Suite.DIAMONDS)),
                 new Card('A', Suite.HEARTS)
-        ));
+        );
         assertThat(cribbageHand.scoreWith(new PairsRule()), is(4));
     }
 
@@ -43,9 +43,9 @@ public class ScorePairsTest {
                 new Card('3', Suite.DIAMONDS),
                 new Card('A', Suite.DIAMONDS),
                 new Card('3', Suite.CLUBS),
-                new Card('6', Suite.DIAMONDS),
+                new Card('6', Suite.DIAMONDS)),
                 new Card('3', Suite.HEARTS)
-        ));
+        );
         assertThat(cribbageHand.scoreWith(new PairsRule()), is(6));
     }
 
@@ -55,9 +55,9 @@ public class ScorePairsTest {
                 new Card('A', Suite.DIAMONDS),
                 new Card('A', Suite.SPADES),
                 new Card('A', Suite.CLUBS),
-                new Card('6', Suite.DIAMONDS),
+                new Card('6', Suite.DIAMONDS)),
                 new Card('A', Suite.HEARTS)
-        ));
+        );
         assertThat(cribbageHand.scoreWith(new PairsRule()), is(12));
     }
 }

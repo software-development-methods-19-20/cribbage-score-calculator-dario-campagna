@@ -1,16 +1,19 @@
 package cribbage;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CribbageHand {
-    private List<Card> cards;
+    private List<Card> handCards;
+    private Card starterCard;
 
-    public CribbageHand(List<Card> cards) {
-        this.cards = cards;
+    public CribbageHand(List<Card> handCards, Card starterCard) {
+        this.handCards = handCards;
+        this.starterCard = starterCard;
     }
 
     public int scoreWith(Rule rule) {
-        return rule.applyTo(cards);
+        return rule.applyTo(handCards, starterCard);
     }
 
     @Override
@@ -20,11 +23,14 @@ public class CribbageHand {
 
         CribbageHand that = (CribbageHand) o;
 
-        return cards.equals(that.cards);
+        if (!handCards.equals(that.handCards)) return false;
+        return starterCard.equals(that.starterCard);
     }
 
     @Override
     public int hashCode() {
-        return cards.hashCode();
+        int result = handCards.hashCode();
+        result = 31 * result + starterCard.hashCode();
+        return result;
     }
 }
