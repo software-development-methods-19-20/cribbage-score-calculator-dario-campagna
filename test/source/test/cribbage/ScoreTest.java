@@ -72,4 +72,16 @@ public class ScoreTest {
         );
         assertThat(scorer.score(cribbageHand), is(4));
     }
+
+    @Test
+    void flushPlusAdditionalPoints() {
+        CribbageHand cribbageHand = new CribbageHand(Arrays.asList(
+                new Card('4', Suite.HEARTS),
+                new Card('J', Suite.HEARTS),
+                new Card('3', Suite.HEARTS),
+                new Card('K', Suite.HEARTS)),
+                new Card('0', Suite.HEARTS)
+        );
+        assertThat(scorer.score(cribbageHand), is(6));
+    }
 }
