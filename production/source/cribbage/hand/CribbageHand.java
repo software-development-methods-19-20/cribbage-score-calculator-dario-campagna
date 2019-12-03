@@ -18,7 +18,7 @@ public class CribbageHand {
     }
 
     public int numberOfPairs() {
-        return (int) numberOfPairsIn(allCards());
+        return numberOfPairsIn(allCards());
     }
 
     public boolean isFlush() {
@@ -58,9 +58,9 @@ public class CribbageHand {
         return cards;
     }
 
-    private long numberOfPairsIn(List<Card> cards) {
+    private int numberOfPairsIn(List<Card> cards) {
         Stream<List<Card>> combinations = Generator.combination(cards).simple(2).stream();
-        return combinations.filter(comb -> comb.get(0).rank().equals(comb.get(1).rank())).count();
+        return (int) combinations.filter(comb -> comb.get(0).rank().equals(comb.get(1).rank())).count();
     }
 
     @Override
