@@ -67,4 +67,12 @@ public class Rank implements Comparable {
     public int hashCode() {
         return rankAsChar;
     }
+
+    public Rank next() {
+        if (rankAsChar == 'K') {
+            return this;
+        } else {
+            return ORDINAL_BY_CHARACTER.entrySet().stream().filter(e -> e.getValue().equals(ORDINAL_BY_CHARACTER.get(rankAsChar)+1)).findFirst().map(e -> new Rank(e.getKey())).orElse(this);
+        }
+    }
 }

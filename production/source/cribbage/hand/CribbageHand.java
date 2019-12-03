@@ -3,6 +3,7 @@ package cribbage.hand;
 import org.paukov.combinatorics3.Generator;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -38,6 +39,12 @@ public class CribbageHand {
                 combinationsOfRankValues(3).filter(isSumFifteen()).count() +
                 combinationsOfRankValues(4).filter(isSumFifteen()).count() +
                 combinationsOfRankValues(5).filter(isSumFifteen()).count());
+    }
+
+    public boolean isRunOfFive() {
+        List<Rank> ranks = allCards().stream().map(c -> c.rank()).collect(Collectors.toList());
+        Collections.sort(ranks);
+        return ranks.stream().allMatch(r -> ranks.contains(r.next()));
     }
 
     private Stream<List<Integer>> combinationsOfRankValues(int i) {
