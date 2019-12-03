@@ -57,13 +57,8 @@ public class CribbageHand {
     }
 
     private long numberOfPairsIn(List<Card> cards) {
-        if (cards.isEmpty()) {
-            return 0;
-        } else {
-            Card card = cards.get(0);
-            cards = cards.subList(1, cards.size());
-            return cards.stream().filter(c -> c.rank().equals(card.rank())).count() + numberOfPairsIn(cards);
-        }
+        Stream<List<Card>> combinations = Generator.combination(cards).simple(2).stream();
+        return combinations.filter(comb -> comb.get(0).rank().equals(comb.get(1).rank())).count();
     }
 
     @Override
