@@ -36,4 +36,17 @@ public class ScoreFifteenTwosTest {
                 new Card(new Rank('7'), Suite.CLUBS));
         assertThat(new FifteenTwoRule().score(cribbageHand), is(4));
     }
+
+    @Test
+    void fifteenFourWithFourCards() {
+        CribbageHand cribbageHand = new CribbageHand(
+                Arrays.asList(
+                        new Card(new Rank('2'), Suite.SPADES),
+                        new Card(new Rank('5'), Suite.DIAMONDS),
+                        new Card(new Rank('3'), Suite.SPADES),
+                        new Card(new Rank('A'), Suite.HEARTS)
+                ),
+                new Card(new Rank('5'), Suite.CLUBS));
+        assertThat(new FifteenTwoRule().score(cribbageHand), is(2));
+    }
 }

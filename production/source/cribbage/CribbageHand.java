@@ -35,7 +35,8 @@ public class CribbageHand {
 
     public int numberOfFifteenTwos() {
         return (int) (combinationsOfRankValues(2).filter(isSumFifteen()).count() +
-                combinationsOfRankValues(3).filter(isSumFifteen()).count());
+                combinationsOfRankValues(3).filter(isSumFifteen()).count() +
+                combinationsOfRankValues(4).filter(isSumFifteen()).count());
     }
 
     private Stream<List<Integer>> combinationsOfRankValues(int i) {
