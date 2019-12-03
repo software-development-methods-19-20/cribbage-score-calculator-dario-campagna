@@ -4,14 +4,13 @@ import cribbage.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
-import java.util.stream.Stream;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 public class ScoreTest {
 
-    private Scorer scorer = new Scorer(Stream.of(new PairsRule(), new FlushRule()));
+    private Scorer scorer = ScorerFactory.create();
 
     @Test
     void pair() {
@@ -83,5 +82,17 @@ public class ScoreTest {
                 new Card(new Rank('0'), Suite.HEARTS)
         );
         assertThat(scorer.score(cribbageHand), is(6));
+    }
+
+    @Test
+    void fifteenSixteenAndSixPairs() {
+        CribbageHand cribbageHand = new CribbageHand(Arrays.asList(
+                new Card(new Rank('5'), Suite.DIAMONDS),
+                new Card(new Rank('5'), Suite.HEARTS),
+                new Card(new Rank('5'), Suite.CLUBS),
+                new Card(new Rank('0'), Suite.SPADES)),
+                new Card(new Rank('5'), Suite.SPADES)
+        );
+        assertThat(scorer.score(cribbageHand), is(28));
     }
 }

@@ -1,7 +1,6 @@
 package test.cribbage;
 
 import cribbage.*;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -21,7 +20,7 @@ public class ScoreFifteenTwosTest {
                         new Card(new Rank('A'), Suite.HEARTS)
                 ),
                 new Card(new Rank('8'), Suite.CLUBS));
-        assertThat(new FifteenTwoRule().score(cribbageHand), is(2));
+        assertThat(new FifteenTwosRule().score(cribbageHand), is(2));
     }
 
     @Test
@@ -34,7 +33,7 @@ public class ScoreFifteenTwosTest {
                         new Card(new Rank('A'), Suite.HEARTS)
                 ),
                 new Card(new Rank('7'), Suite.CLUBS));
-        assertThat(new FifteenTwoRule().score(cribbageHand), is(4));
+        assertThat(new FifteenTwosRule().score(cribbageHand), is(4));
     }
 
     @Test
@@ -47,7 +46,7 @@ public class ScoreFifteenTwosTest {
                         new Card(new Rank('A'), Suite.HEARTS)
                 ),
                 new Card(new Rank('5'), Suite.CLUBS));
-        assertThat(new FifteenTwoRule().score(cribbageHand), is(2));
+        assertThat(new FifteenTwosRule().score(cribbageHand), is(2));
     }
 
     @Test
@@ -60,6 +59,6 @@ public class ScoreFifteenTwosTest {
                         new Card(new Rank('3'), Suite.HEARTS)
                 ),
                 new Card(new Rank('2'), Suite.CLUBS));
-        assertThat(new FifteenTwoRule().score(cribbageHand), is(2));
+        assertThat(new FifteenTwosRule().score(cribbageHand), is(2));
     }
 }
