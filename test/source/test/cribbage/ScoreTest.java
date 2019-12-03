@@ -99,4 +99,16 @@ public class ScoreTest {
         );
         assertThat(scorer.score(cribbageHand), is(28));
     }
+
+    @Test
+    void eightPointsForADoubleRun() {
+        CribbageHand cribbageHand = new CribbageHand(Arrays.asList(
+                new Card(new Rank('5'), Suite.DIAMONDS),
+                new Card(new Rank('5'), Suite.HEARTS),
+                new Card(new Rank('6'), Suite.CLUBS),
+                new Card(new Rank('A'), Suite.SPADES)),
+                new Card(new Rank('7'), Suite.SPADES)
+        );
+        assertThat(scorer.score(cribbageHand), is(8));
+    }
 }
