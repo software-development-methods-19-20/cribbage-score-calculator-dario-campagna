@@ -16,11 +16,11 @@ public class ScoreTest {
     @Test
     void pair() {
         CribbageHand cribbageHand = new CribbageHand(Arrays.asList(
-                new Card('2', Suite.DIAMONDS),
-                new Card('A', Suite.DIAMONDS),
-                new Card('2', Suite.CLUBS),
-                new Card('7', Suite.DIAMONDS)),
-                new Card('9', Suite.DIAMONDS)
+                new Card(new Rank('2'), Suite.DIAMONDS),
+                new Card(new Rank('A'), Suite.DIAMONDS),
+                new Card(new Rank('2'), Suite.CLUBS),
+                new Card(new Rank('7'), Suite.DIAMONDS)),
+                new Card(new Rank('9'), Suite.DIAMONDS)
         );
         assertThat(scorer.score(cribbageHand), is(2));
     }
@@ -28,11 +28,11 @@ public class ScoreTest {
     @Test
     void twoPairs() {
         CribbageHand cribbageHand = new CribbageHand(Arrays.asList(
-                new Card('3', Suite.DIAMONDS),
-                new Card('A', Suite.DIAMONDS),
-                new Card('3', Suite.CLUBS),
-                new Card('6', Suite.DIAMONDS)),
-                new Card('A', Suite.HEARTS)
+                new Card(new Rank('3'), Suite.DIAMONDS),
+                new Card(new Rank('A'), Suite.DIAMONDS),
+                new Card(new Rank('3'), Suite.CLUBS),
+                new Card(new Rank('6'), Suite.DIAMONDS)),
+                new Card(new Rank('A'), Suite.HEARTS)
         );
         assertThat(scorer.score(cribbageHand), is(4));
     }
@@ -40,11 +40,11 @@ public class ScoreTest {
     @Test
     void pairRoyal() {
         CribbageHand cribbageHand = new CribbageHand(Arrays.asList(
-                new Card('6', Suite.HEARTS),
-                new Card('A', Suite.DIAMONDS),
-                new Card('6', Suite.CLUBS),
-                new Card('6', Suite.DIAMONDS)),
-                new Card('0', Suite.HEARTS)
+                new Card(new Rank('6'), Suite.HEARTS),
+                new Card(new Rank('A'), Suite.DIAMONDS),
+                new Card(new Rank('6'), Suite.CLUBS),
+                new Card(new Rank('6'), Suite.DIAMONDS)),
+                new Card(new Rank('0'), Suite.HEARTS)
         );
         assertThat(scorer.score(cribbageHand), is(6));
     }
@@ -52,11 +52,11 @@ public class ScoreTest {
     @Test
     void doublePairRoyal() {
         CribbageHand cribbageHand = new CribbageHand(Arrays.asList(
-                new Card('K', Suite.HEARTS),
-                new Card('K', Suite.SPADES),
-                new Card('K', Suite.CLUBS),
-                new Card('K', Suite.DIAMONDS)),
-                new Card('0', Suite.HEARTS)
+                new Card(new Rank('K'), Suite.HEARTS),
+                new Card(new Rank('K'), Suite.SPADES),
+                new Card(new Rank('K'), Suite.CLUBS),
+                new Card(new Rank('K'), Suite.DIAMONDS)),
+                new Card(new Rank('0'), Suite.HEARTS)
         );
         assertThat(scorer.score(cribbageHand), is(12));
     }
@@ -64,11 +64,11 @@ public class ScoreTest {
     @Test
     void flush() {
         CribbageHand cribbageHand = new CribbageHand(Arrays.asList(
-                new Card('4', Suite.HEARTS),
-                new Card('9', Suite.HEARTS),
-                new Card('3', Suite.HEARTS),
-                new Card('K', Suite.HEARTS)),
-                new Card('0', Suite.SPADES)
+                new Card(new Rank('4'), Suite.HEARTS),
+                new Card(new Rank('9'), Suite.HEARTS),
+                new Card(new Rank('3'), Suite.HEARTS),
+                new Card(new Rank('K'), Suite.HEARTS)),
+                new Card(new Rank('0'), Suite.SPADES)
         );
         assertThat(scorer.score(cribbageHand), is(4));
     }
@@ -76,11 +76,11 @@ public class ScoreTest {
     @Test
     void flushPlusAdditionalPoints() {
         CribbageHand cribbageHand = new CribbageHand(Arrays.asList(
-                new Card('4', Suite.HEARTS),
-                new Card('J', Suite.HEARTS),
-                new Card('3', Suite.HEARTS),
-                new Card('K', Suite.HEARTS)),
-                new Card('0', Suite.HEARTS)
+                new Card(new Rank('4'), Suite.HEARTS),
+                new Card(new Rank('J'), Suite.HEARTS),
+                new Card(new Rank('3'), Suite.HEARTS),
+                new Card(new Rank('K'), Suite.HEARTS)),
+                new Card(new Rank('0'), Suite.HEARTS)
         );
         assertThat(scorer.score(cribbageHand), is(6));
     }

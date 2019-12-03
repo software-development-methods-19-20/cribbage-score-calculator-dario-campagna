@@ -2,6 +2,7 @@ package test.cribbage;
 
 import cribbage.Card;
 import cribbage.CardParser;
+import cribbage.Rank;
 import cribbage.Suite;
 import org.junit.jupiter.api.Test;
 
@@ -13,13 +14,13 @@ public class ParseCardTest {
     @Test
     void parseCardWithRankFive() {
         Card card = CardParser.parse("5H");
-        assertThat(card.rank(), is('5'));
+        assertThat(card.rank(), is(new Rank('5')));
     }
 
     @Test
     void parseCardWithRankAce() {
         Card card = CardParser.parse("AD");
-        assertThat(card.rank(), is('A'));
+        assertThat(card.rank(), is(new Rank('A')));
     }
 
     @Test
@@ -48,7 +49,7 @@ public class ParseCardTest {
 
     @Test
     void parseCard() {
-        Card expectedCard = new Card('3', Suite.CLUBS);
+        Card expectedCard = new Card(new Rank('3'), Suite.CLUBS);
         assertThat(CardParser.parse("3C"), is(expectedCard));
     }
 }

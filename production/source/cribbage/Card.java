@@ -2,15 +2,15 @@ package cribbage;
 
 public class Card {
 
-    private char rank;
+    private Rank rank;
     private Suite suite;
 
-    public Card(char rank, Suite suite) {
+    public Card(Rank rank, Suite suite) {
         this.rank = rank;
         this.suite = suite;
     }
 
-    public char rank() {
+    public Rank rank() {
         return rank;
     }
 
@@ -25,13 +25,13 @@ public class Card {
 
         Card card = (Card) o;
 
-        if (rank != card.rank) return false;
+        if (!rank.equals(card.rank)) return false;
         return suite == card.suite;
     }
 
     @Override
     public int hashCode() {
-        int result = rank;
+        int result = rank.hashCode();
         result = 31 * result + suite.hashCode();
         return result;
     }

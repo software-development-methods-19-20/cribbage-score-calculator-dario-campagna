@@ -1,9 +1,6 @@
 package test.cribbage;
 
-import cribbage.Card;
-import cribbage.CribbageHand;
-import cribbage.FifteenTwoRule;
-import cribbage.Suite;
+import cribbage.*;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -18,12 +15,12 @@ public class ScoreFifteenTwosTest {
     void fifteenTwo() {
         CribbageHand cribbageHand = new CribbageHand(
                 Arrays.asList(
-                        new Card('0', Suite.SPADES),
-                        new Card('5', Suite.DIAMONDS),
-                        new Card('3', Suite.SPADES),
-                        new Card('A', Suite.HEARTS)
+                        new Card(new Rank('0'), Suite.SPADES),
+                        new Card(new Rank('5'), Suite.DIAMONDS),
+                        new Card(new Rank('3'), Suite.SPADES),
+                        new Card(new Rank('A'), Suite.HEARTS)
                 ),
-                new Card('8', Suite.CLUBS));
+                new Card(new Rank('8'), Suite.CLUBS));
         assertThat(new FifteenTwoRule().score(cribbageHand), is(2));
     }
 
@@ -32,12 +29,12 @@ public class ScoreFifteenTwosTest {
     void fifteenFour() {
         CribbageHand cribbageHand = new CribbageHand(
                 Arrays.asList(
-                        new Card('0', Suite.SPADES),
-                        new Card('5', Suite.DIAMONDS),
-                        new Card('3', Suite.SPADES),
-                        new Card('A', Suite.HEARTS)
+                        new Card(new Rank('0'), Suite.SPADES),
+                        new Card(new Rank('5'), Suite.DIAMONDS),
+                        new Card(new Rank('3'), Suite.SPADES),
+                        new Card(new Rank('A'), Suite.HEARTS)
                 ),
-                new Card('7', Suite.CLUBS));
+                new Card(new Rank('7'), Suite.CLUBS));
         assertThat(new FifteenTwoRule().score(cribbageHand), is(4));
     }
 }

@@ -16,8 +16,8 @@ public class CardParser {
         return new Card(parseRank(cardAsText), parseSuite(cardAsText));
     }
 
-    private static char parseRank(String cardAsText) {
-        return cardAsText.charAt(0);
+    private static Rank parseRank(String cardAsText) {
+        return new Rank(cardAsText.charAt(0));
     }
 
     private static Suite parseSuite(String cardAsText) {

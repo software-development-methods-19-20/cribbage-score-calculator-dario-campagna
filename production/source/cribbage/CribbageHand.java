@@ -25,7 +25,11 @@ public class CribbageHand {
     }
 
     public boolean hasHisNob() {
-        return handCards.stream().anyMatch(card -> card.suite().equals(starterCard.suite()) && card.rank() == 'J');
+        return handCards.stream().anyMatch(card -> card.suite().equals(starterCard.suite()) && card.rank().isJack());
+    }
+
+    public int numberOfFifteenTwos() {
+        return 1;
     }
 
     private List<Card> allCards() {
@@ -40,7 +44,7 @@ public class CribbageHand {
         } else {
             Card card = cards.get(0);
             cards = cards.subList(1, cards.size());
-            return cards.stream().filter(c -> c.rank() == card.rank()).count() + numberOfPairsIn(cards);
+            return cards.stream().filter(c -> c.rank().equals(card.rank())).count() + numberOfPairsIn(cards);
         }
     }
 
