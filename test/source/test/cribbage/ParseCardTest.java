@@ -1,9 +1,9 @@
 package test.cribbage;
 
-import cribbage.Card;
-import cribbage.CardParser;
-import cribbage.Rank;
-import cribbage.Suite;
+import cribbage.hand.Card;
+import cribbage.hand.CardParser;
+import cribbage.hand.Rank;
+import cribbage.hand.Suite;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.is;

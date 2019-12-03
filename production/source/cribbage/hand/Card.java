@@ -1,4 +1,4 @@
-package cribbage;
+package cribbage.hand;
 
 public class Card {
 

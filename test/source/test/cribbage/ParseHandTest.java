@@ -1,6 +1,6 @@
 package test.cribbage;
 
-import cribbage.*;
+import cribbage.hand.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;

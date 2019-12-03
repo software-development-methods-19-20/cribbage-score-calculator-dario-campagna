@@ -1,6 +1,6 @@
 package test.cribbage;
 
-import cribbage.Rank;
+import cribbage.hand.Rank;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.Matchers.is;

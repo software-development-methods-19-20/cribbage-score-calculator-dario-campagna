@@ -1,4 +1,8 @@
-package cribbage;
+package cribbage.hand;
+
+import cribbage.hand.Card;
+import cribbage.hand.Rank;
+import cribbage.hand.Suite;
 
 import java.util.HashMap;
 import java.util.Map;

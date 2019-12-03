@@ -1,4 +1,4 @@
-package cribbage;
+package cribbage.hand;
 
 import org.paukov.combinatorics3.Generator;
 

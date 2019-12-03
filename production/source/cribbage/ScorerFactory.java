@@ -1,5 +1,9 @@
 package cribbage;
 
+import cribbage.rules.FifteenTwosRule;
+import cribbage.rules.FlushRule;
+import cribbage.rules.PairsRule;
+
 import java.util.stream.Stream;
 
 public class ScorerFactory {

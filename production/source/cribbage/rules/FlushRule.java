@@ -1,4 +1,6 @@
-package cribbage;
+package cribbage.rules;
+
+import cribbage.hand.CribbageHand;
 
 public class FlushRule implements Rule {
 

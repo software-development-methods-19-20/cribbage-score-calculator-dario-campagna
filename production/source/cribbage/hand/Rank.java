@@ -1,4 +1,4 @@
-package cribbage;
+package cribbage.hand;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,6 +1,10 @@
 package test.cribbage;
 
-import cribbage.*;
+import cribbage.hand.Card;
+import cribbage.hand.CribbageHand;
+import cribbage.hand.Rank;
+import cribbage.hand.Suite;
+import cribbage.rules.PairsRule;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;

@@ -1,5 +1,8 @@
 package cribbage;
 
+import cribbage.hand.CribbageHand;
+import cribbage.rules.Rule;
+
 import java.util.stream.Stream;
 
 public class Scorer {
