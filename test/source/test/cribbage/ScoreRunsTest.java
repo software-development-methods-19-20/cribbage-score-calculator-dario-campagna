@@ -65,6 +65,31 @@ public class ScoreRunsTest {
                 new Card(new Rank('K'), Suite.HEARTS)
         );
         assertThat(new RunsRule().score(cribbageHand), is(4));
+    }
 
+    @Test
+    void threePointsForARunOfThree() {
+        CribbageHand cribbageHand = new CribbageHand(
+                Arrays.asList(
+                        new Card(new Rank('0'), Suite.HEARTS),
+                        new Card(new Rank('3'), Suite.DIAMONDS),
+                        new Card(new Rank('4'), Suite.CLUBS),
+                        new Card(new Rank('5'), Suite.DIAMONDS)),
+                new Card(new Rank('K'), Suite.HEARTS)
+        );
+        assertThat(new RunsRule().score(cribbageHand), is(3));
+    }
+
+    @Test
+    void sixPointsForTwoRunsOfThree() {
+        CribbageHand cribbageHand = new CribbageHand(
+                Arrays.asList(
+                        new Card(new Rank('3'), Suite.HEARTS),
+                        new Card(new Rank('3'), Suite.DIAMONDS),
+                        new Card(new Rank('4'), Suite.CLUBS),
+                        new Card(new Rank('5'), Suite.DIAMONDS)),
+                new Card(new Rank('K'), Suite.HEARTS)
+        );
+        assertThat(new RunsRule().score(cribbageHand), is(6));
     }
 }

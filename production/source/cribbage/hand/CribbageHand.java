@@ -50,6 +50,11 @@ public class CribbageHand {
         return Generator.combination(ranks).simple(4).stream().anyMatch(comb -> Rank.areConsecutive(comb));
     }
 
+    public int numbersOfRunsOfThree() {
+        List<Rank> ranks = allCards().stream().map(c -> c.rank()).collect(Collectors.toList());
+        return (int) Generator.combination(ranks).simple(3).stream().filter(comb -> Rank.areConsecutive(comb)).count();
+    }
+
     private Stream<List<Integer>> combinationsOfRankValues(int i) {
         return Generator.combination(allRanksValues()).simple(i).stream();
     }

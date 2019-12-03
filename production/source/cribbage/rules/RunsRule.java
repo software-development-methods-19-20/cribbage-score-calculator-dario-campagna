@@ -10,7 +10,7 @@ public class RunsRule implements Rule {
         } else if (cribbageHand.isRunOfFour()) {
             return 4;
         } else {
-            return 0;
+            return 3 * cribbageHand.numbersOfRunsOfThree();
         }
     }
 }
