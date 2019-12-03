@@ -111,4 +111,40 @@ public class ScoreTest {
         );
         assertThat(scorer.score(cribbageHand), is(8));
     }
+
+    @Test
+    void fifteenPointsForATripleRun() {
+        CribbageHand cribbageHand = new CribbageHand(Arrays.asList(
+                new Card(new Rank('2'), Suite.DIAMONDS),
+                new Card(new Rank('2'), Suite.HEARTS),
+                new Card(new Rank('3'), Suite.CLUBS),
+                new Card(new Rank('4'), Suite.SPADES)),
+                new Card(new Rank('2'), Suite.SPADES)
+        );
+        assertThat(scorer.score(cribbageHand), is(15));
+    }
+
+    @Test
+    void sixteenPointsForADoubleDoubleRun() {
+        CribbageHand cribbageHand = new CribbageHand(Arrays.asList(
+                new Card(new Rank('4'), Suite.DIAMONDS),
+                new Card(new Rank('2'), Suite.HEARTS),
+                new Card(new Rank('3'), Suite.CLUBS),
+                new Card(new Rank('4'), Suite.SPADES)),
+                new Card(new Rank('3'), Suite.SPADES)
+        );
+        assertThat(scorer.score(cribbageHand), is(16));
+    }
+
+    @Test
+    void highestPossibleScore() {
+        CribbageHand cribbageHand = new CribbageHand(Arrays.asList(
+                new Card(new Rank('5'), Suite.DIAMONDS),
+                new Card(new Rank('5'), Suite.HEARTS),
+                new Card(new Rank('5'), Suite.CLUBS),
+                new Card(new Rank('J'), Suite.SPADES)),
+                new Card(new Rank('5'), Suite.SPADES)
+        );
+        assertThat(scorer.score(cribbageHand), is(29));
+    }
 }
