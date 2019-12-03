@@ -1,7 +1,12 @@
 package cribbage;
 
+import org.paukov.combinatorics3.Generator;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class CribbageHand {
     private List<Card> handCards;
@@ -29,7 +34,20 @@ public class CribbageHand {
     }
 
     public int numberOfFifteenTwos() {
-        return 1;
+        return (int) (combinationsOfRankValues(2).filter(isSumFifteen()).count() +
+                combinationsOfRankValues(3).filter(isSumFifteen()).count());
+    }
+
+    private Stream<List<Integer>> combinationsOfRankValues(int i) {
+        return Generator.combination(allRanksValues()).simple(i).stream();
+    }
+
+    private Predicate<List<Integer>> isSumFifteen() {
+        return comb -> comb.stream().reduce(0, (x, y) -> x + y) == 15;
+    }
+
+    private List<Integer> allRanksValues() {
+        return allCards().stream().map(c -> c.rank().toInt()).collect(Collectors.toList());
     }
 
     private List<Card> allCards() {

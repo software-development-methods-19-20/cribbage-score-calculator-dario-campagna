@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="production-lib">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/production/lib" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/production/lib" recursive="false" />
+  </library>
+</component>

@@ -25,7 +25,6 @@ public class ScoreFifteenTwosTest {
     }
 
     @Test
-    @Disabled
     void fifteenFour() {
         CribbageHand cribbageHand = new CribbageHand(
                 Arrays.asList(
