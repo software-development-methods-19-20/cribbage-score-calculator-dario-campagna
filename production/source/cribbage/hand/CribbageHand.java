@@ -3,7 +3,6 @@ package cribbage.hand;
 import org.paukov.combinatorics3.Generator;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -43,8 +42,12 @@ public class CribbageHand {
 
     public boolean isRunOfFive() {
         List<Rank> ranks = allCards().stream().map(c -> c.rank()).collect(Collectors.toList());
-        Collections.sort(ranks);
-        return ranks.stream().allMatch(r -> ranks.contains(r.next()));
+        return Rank.areConsecutive(ranks);
+    }
+
+    public boolean isRunOfFour() {
+        List<Rank> ranks = allCards().stream().map(c -> c.rank()).collect(Collectors.toList());
+        return Generator.combination(ranks).simple(4).stream().anyMatch(comb -> Rank.areConsecutive(comb));
     }
 
     private Stream<List<Integer>> combinationsOfRankValues(int i) {

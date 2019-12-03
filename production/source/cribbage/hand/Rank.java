@@ -1,6 +1,9 @@
 package cribbage.hand;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Rank implements Comparable {
     private static final Map<Character, Integer> VALUE_BY_CHARACTER = new HashMap<>() {{
@@ -18,7 +21,7 @@ public class Rank implements Comparable {
         put('Q', 10);
         put('K', 10);
     }};
-    private static final Map<Character, Integer> ORDINAL_BY_CHARACTER = new HashMap<>(){{
+    private static final Map<Character, Integer> ORDINAL_BY_CHARACTER = new HashMap<>() {{
         put('A', 1);
         put('2', 2);
         put('3', 3);
@@ -34,6 +37,19 @@ public class Rank implements Comparable {
         put('K', 13);
     }};
     private char rankAsChar;
+
+    public static boolean areConsecutive(List<Rank> ranks) {
+        Collections.sort(ranks);
+        boolean areConsecutive = true;
+        int i = 1;
+        while (i < ranks.size() && areConsecutive) {
+            if (ranks.get(i).notSuccessorOf(ranks.get(i - 1))) {
+                areConsecutive = false;
+            }
+            i++;
+        }
+        return areConsecutive;
+    }
 
     public Rank(char rankAsChar) {
         this.rankAsChar = rankAsChar;
@@ -68,11 +84,7 @@ public class Rank implements Comparable {
         return rankAsChar;
     }
 
-    public Rank next() {
-        if (rankAsChar == 'K') {
-            return this;
-        } else {
-            return ORDINAL_BY_CHARACTER.entrySet().stream().filter(e -> e.getValue().equals(ORDINAL_BY_CHARACTER.get(rankAsChar)+1)).findFirst().map(e -> new Rank(e.getKey())).orElse(this);
-        }
+    private boolean notSuccessorOf(Rank rank) {
+        return ORDINAL_BY_CHARACTER.get(rankAsChar) - ORDINAL_BY_CHARACTER.get(rank.rankAsChar) != 1;
     }
 }

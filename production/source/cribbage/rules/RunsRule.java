@@ -7,6 +7,8 @@ public class RunsRule implements Rule {
     public int score(CribbageHand cribbageHand) {
         if (cribbageHand.isRunOfFive()) {
             return 5;
+        } else if (cribbageHand.isRunOfFour()) {
+            return 4;
         } else {
             return 0;
         }
