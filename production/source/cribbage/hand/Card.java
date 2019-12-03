@@ -18,6 +18,10 @@ public class Card {
         return suite;
     }
 
+    public boolean isJack() {
+        return rank.isJack();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

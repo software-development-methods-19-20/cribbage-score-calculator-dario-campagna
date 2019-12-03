@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class CribbageHand {
@@ -18,7 +19,8 @@ public class CribbageHand {
     }
 
     public int numberOfPairs() {
-        return numberOfPairsIn(allCards());
+        Stream<List<Card>> combinations = Generator.combination(allCards()).simple(2).stream();
+        return (int) combinations.filter(comb -> comb.get(0).rank().equals(comb.get(1).rank())).count();
     }
 
     public boolean isFlush() {
@@ -30,41 +32,22 @@ public class CribbageHand {
     }
 
     public boolean hasHisNob() {
-        return handCards.stream().anyMatch(card -> card.suite().equals(starterCard.suite()) && card.rank().isJack());
+        return handCards.stream().anyMatch(card -> card.suite().equals(starterCard.suite()) && card.isJack());
+    }
+
+    public int numbersOfRunsOf(int n) {
+        List<Rank> ranks = allCards().stream().map(Card::rank).collect(Collectors.toList());
+        return (int) Generator.combination(ranks).simple(n).stream().filter(Rank::areConsecutive).count();
     }
 
     public int numberOfFifteenTwos() {
-        return (int) (combinationsOfRankValues(2).filter(isSumFifteen()).count() +
-                combinationsOfRankValues(3).filter(isSumFifteen()).count() +
-                combinationsOfRankValues(4).filter(isSumFifteen()).count() +
-                combinationsOfRankValues(5).filter(isSumFifteen()).count());
-    }
-
-    public boolean isRunOfFive() {
-        List<Rank> ranks = allCards().stream().map(c -> c.rank()).collect(Collectors.toList());
-        return Rank.areConsecutive(ranks);
-    }
-
-    public boolean isRunOfFour() {
-        List<Rank> ranks = allCards().stream().map(c -> c.rank()).collect(Collectors.toList());
-        return Generator.combination(ranks).simple(4).stream().anyMatch(comb -> Rank.areConsecutive(comb));
-    }
-
-    public int numbersOfRunsOfThree() {
-        List<Rank> ranks = allCards().stream().map(c -> c.rank()).collect(Collectors.toList());
-        return (int) Generator.combination(ranks).simple(3).stream().filter(comb -> Rank.areConsecutive(comb)).count();
+        return IntStream.rangeClosed(2, 5)
+                .map(i -> (int)combinationsOfRankValues(i).filter(isSumFifteen()).count()).sum();
     }
 
     private Stream<List<Integer>> combinationsOfRankValues(int i) {
-        return Generator.combination(allRanksValues()).simple(i).stream();
-    }
-
-    private Predicate<List<Integer>> isSumFifteen() {
-        return comb -> comb.stream().reduce(0, (x, y) -> x + y) == 15;
-    }
-
-    private List<Integer> allRanksValues() {
-        return allCards().stream().map(c -> c.rank().toInt()).collect(Collectors.toList());
+        List<Integer> ranksValues = allCards().stream().map(c -> c.rank().toInt()).collect(Collectors.toList());
+        return Generator.combination(ranksValues).simple(i).stream();
     }
 
     private List<Card> allCards() {
@@ -73,9 +56,8 @@ public class CribbageHand {
         return cards;
     }
 
-    private int numberOfPairsIn(List<Card> cards) {
-        Stream<List<Card>> combinations = Generator.combination(cards).simple(2).stream();
-        return (int) combinations.filter(comb -> comb.get(0).rank().equals(comb.get(1).rank())).count();
+    private Predicate<List<Integer>> isSumFifteen() {
+        return comb -> comb.stream().reduce(0, Integer::sum) == 15;
     }
 
     @Override

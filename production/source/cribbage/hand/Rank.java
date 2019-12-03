@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Rank implements Comparable {
+public class Rank implements Comparable<Rank> {
     private static final Map<Character, Integer> VALUE_BY_CHARACTER = new HashMap<>() {{
         put('A', 1);
         put('2', 2);
@@ -64,12 +64,6 @@ public class Rank implements Comparable {
     }
 
     @Override
-    public int compareTo(Object o) {
-        Rank other = (Rank) o;
-        return ORDINAL_BY_CHARACTER.get(rankAsChar) - ORDINAL_BY_CHARACTER.get(other.rankAsChar);
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -82,6 +76,11 @@ public class Rank implements Comparable {
     @Override
     public int hashCode() {
         return rankAsChar;
+    }
+
+    @Override
+    public int compareTo(Rank other) {
+        return ORDINAL_BY_CHARACTER.get(rankAsChar) - ORDINAL_BY_CHARACTER.get(other.rankAsChar);
     }
 
     private boolean notSuccessorOf(Rank rank) {
