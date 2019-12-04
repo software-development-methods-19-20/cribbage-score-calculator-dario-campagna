@@ -1,9 +1,6 @@
 package test.cribbage;
 
-import cribbage.hand.Card;
-import cribbage.hand.CribbageHand;
-import cribbage.hand.Rank;
-import cribbage.hand.Suite;
+import cribbage.hand.*;
 import cribbage.rules.PairsRule;
 import org.junit.jupiter.api.Test;
 
@@ -17,11 +14,11 @@ public class ScorePairsTest {
     @Test
     void twoPointsForAPairsOfCardOfAKind() {
         CribbageHand cribbageHand = new CribbageHand(Arrays.asList(
-                new Card(new Rank('2'), Suite.DIAMONDS),
-                new Card(new Rank('A'), Suite.DIAMONDS),
-                new Card(new Rank('2'), Suite.CLUBS),
-                new Card(new Rank('7'), Suite.DIAMONDS)),
-                new Card(new Rank('9'), Suite.DIAMONDS)
+                new Card(Rank.create('2'), Suite.DIAMONDS),
+                new Card(Rank.create('A'), Suite.DIAMONDS),
+                new Card(Rank.create('2'), Suite.CLUBS),
+                new Card(Rank.create('7'), Suite.DIAMONDS)),
+                new Card(Rank.create('9'), Suite.DIAMONDS)
         );
         assertThat(new PairsRule().score(cribbageHand), is(2));
     }
@@ -29,11 +26,11 @@ public class ScorePairsTest {
     @Test
     void fourPointsForTwoPairsOfCardOfAKind() {
         CribbageHand cribbageHand = new CribbageHand(Arrays.asList(
-                new Card(new Rank('3'), Suite.DIAMONDS),
-                new Card(new Rank('A'), Suite.DIAMONDS),
-                new Card(new Rank('3'), Suite.CLUBS),
-                new Card(new Rank('6'), Suite.DIAMONDS)),
-                new Card(new Rank('A'), Suite.HEARTS)
+                new Card(Rank.create('3'), Suite.DIAMONDS),
+                new Card(Rank.create('A'), Suite.DIAMONDS),
+                new Card(Rank.create('3'), Suite.CLUBS),
+                new Card(Rank.create('6'), Suite.DIAMONDS)),
+                new Card(Rank.create('A'), Suite.HEARTS)
         );
         assertThat(new PairsRule().score(cribbageHand), is(4));
     }
@@ -41,11 +38,11 @@ public class ScorePairsTest {
     @Test
     void sixPointsForThreeCardsOfAKind() {
         CribbageHand cribbageHand = new CribbageHand(Arrays.asList(
-                new Card(new Rank('3'), Suite.DIAMONDS),
-                new Card(new Rank('A'), Suite.DIAMONDS),
-                new Card(new Rank('3'), Suite.CLUBS),
-                new Card(new Rank('6'), Suite.DIAMONDS)),
-                new Card(new Rank('3'), Suite.HEARTS)
+                new Card(Rank.create('3'), Suite.DIAMONDS),
+                new Card(Rank.create('A'), Suite.DIAMONDS),
+                new Card(Rank.create('3'), Suite.CLUBS),
+                new Card(Rank.create('6'), Suite.DIAMONDS)),
+                new Card(Rank.create('3'), Suite.HEARTS)
         );
         assertThat(new PairsRule().score(cribbageHand), is(6));
     }
@@ -53,11 +50,11 @@ public class ScorePairsTest {
     @Test
     void twelvePointsForFourCardsOfAKind() {
         CribbageHand cribbageHand = new CribbageHand(Arrays.asList(
-                new Card(new Rank('A'), Suite.DIAMONDS),
-                new Card(new Rank('A'), Suite.SPADES),
-                new Card(new Rank('A'), Suite.CLUBS),
-                new Card(new Rank('6'), Suite.DIAMONDS)),
-                new Card(new Rank('A'), Suite.HEARTS)
+                new Card(Rank.create('A'), Suite.DIAMONDS),
+                new Card(Rank.create('A'), Suite.SPADES),
+                new Card(Rank.create('A'), Suite.CLUBS),
+                new Card(Rank.create('6'), Suite.DIAMONDS)),
+                new Card(Rank.create('A'), Suite.HEARTS)
         );
         assertThat(new PairsRule().score(cribbageHand), is(12));
     }

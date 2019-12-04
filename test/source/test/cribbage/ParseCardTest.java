@@ -1,9 +1,6 @@
 package test.cribbage;
 
-import cribbage.hand.Card;
-import cribbage.hand.CardParser;
-import cribbage.hand.Rank;
-import cribbage.hand.Suite;
+import cribbage.hand.*;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -14,13 +11,13 @@ public class ParseCardTest {
     @Test
     void parseCardWithRankFive() {
         Card card = CardParser.parse("5H");
-        assertThat(card.rank(), is(new Rank('5')));
+        assertThat(card.rank(), is(Rank.create('5')));
     }
 
     @Test
     void parseCardWithRankAce() {
         Card card = CardParser.parse("AD");
-        assertThat(card.rank(), is(new Rank('A')));
+        assertThat(card.rank(), is(Rank.create('A')));
     }
 
     @Test
@@ -49,7 +46,7 @@ public class ParseCardTest {
 
     @Test
     void parseCard() {
-        Card expectedCard = new Card(new Rank('3'), Suite.CLUBS);
+        Card expectedCard = new Card(Rank.create('3'), Suite.CLUBS);
         assertThat(CardParser.parse("3C"), is(expectedCard));
     }
 }
