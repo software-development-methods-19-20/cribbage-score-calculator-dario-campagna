@@ -42,7 +42,7 @@ public class CribbageHand {
 
     public int numberOfFifteenTwos() {
         return IntStream.rangeClosed(2, 5)
-                .map(i -> (int)combinationsOfRankValues(i).filter(isSumFifteen()).count()).sum();
+                .map(i -> (int) combinationsOfRankValues(i).filter(isSumFifteen()).count()).sum();
     }
 
     private Stream<List<Integer>> combinationsOfRankValues(int i) {

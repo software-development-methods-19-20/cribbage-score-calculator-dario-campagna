@@ -1,4 +1,4 @@
-package test.cribbage;
+package test.cribbage.parse;
 
 import cribbage.hand.*;
 import org.junit.jupiter.api.Test;

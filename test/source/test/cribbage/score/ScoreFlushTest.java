@@ -1,6 +1,9 @@
-package test.cribbage;
+package test.cribbage.score;
 
-import cribbage.hand.*;
+import cribbage.hand.Card;
+import cribbage.hand.CribbageHand;
+import cribbage.hand.Rank;
+import cribbage.hand.Suite;
 import cribbage.rules.FlushRule;
 import org.junit.jupiter.api.Test;
 

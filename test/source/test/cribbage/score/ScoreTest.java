@@ -1,7 +1,11 @@
-package test.cribbage;
+package test.cribbage.score;
 
-import cribbage.*;
-import cribbage.hand.*;
+import cribbage.Scorer;
+import cribbage.ScorerFactory;
+import cribbage.hand.Card;
+import cribbage.hand.CribbageHand;
+import cribbage.hand.Rank;
+import cribbage.hand.Suite;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
