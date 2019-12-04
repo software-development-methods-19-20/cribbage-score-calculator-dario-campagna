@@ -1,9 +1,8 @@
 package cribbage.hand;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Rank implements Comparable<Rank> {
     private static final Map<Character, Integer> VALUE_BY_CHARACTER = new HashMap<>() {{
@@ -39,16 +38,11 @@ public class Rank implements Comparable<Rank> {
     private char rankAsChar;
 
     public static boolean areConsecutive(List<Rank> ranks) {
-        Collections.sort(ranks);
-        boolean areConsecutive = true;
-        int i = 1;
-        while (i < ranks.size() && areConsecutive) {
-            if (ranks.get(i).notSuccessorOf(ranks.get(i - 1))) {
-                areConsecutive = false;
-            }
-            i++;
-        }
-        return areConsecutive;
+        List<Integer> ordinals = ranks.stream().map(rank -> ORDINAL_BY_CHARACTER.get(rank.rankAsChar))
+                .sorted(Integer::compareTo).collect(Collectors.toList());
+        List<Integer> consecutive = IntStream.rangeClosed(ordinals.get(0), ordinals.get(0) + ordinals.size() - 1)
+                .boxed().collect(Collectors.toList());
+        return consecutive.equals(ordinals);
     }
 
     public Rank(char rankAsChar) {
